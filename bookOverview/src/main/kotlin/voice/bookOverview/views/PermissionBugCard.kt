@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import voice.strings.R as StringsR
 
 @Composable
-internal fun PermissionBugCard(onPermissionBugCardClick: () -> Unit) {
+internal fun PermissionBugCard(onPermissionBugCardClicked: () -> Unit) {
   Card(
     Modifier
       .padding(horizontal = 8.dp)
@@ -29,7 +29,7 @@ internal fun PermissionBugCard(onPermissionBugCardClick: () -> Unit) {
       Text(text = stringResource(id = StringsR.string.storage_bug_subtitle))
       Spacer(modifier = Modifier.size(16.dp))
       Button(
-        onClick = onPermissionBugCardClick,
+        onClick = onPermissionBugCardClicked,
       ) {
         Text(text = stringResource(id = StringsR.string.storage_bug_button))
       }
@@ -40,5 +40,5 @@ internal fun PermissionBugCard(onPermissionBugCardClick: () -> Unit) {
 @Composable
 @Preview
 private fun PermissionBugCardPreview() {
-  PermissionBugCard(onPermissionBugCardClick = {})
+  PermissionBugCard(onPermissionBugCardClicked = {})
 }

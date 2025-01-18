@@ -15,13 +15,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 internal fun BottomSheetContent(
   state: EditBookBottomSheetState,
-  onItemClick: (BottomSheetItem) -> Unit,
+  onItemClicked: (BottomSheetItem) -> Unit,
 ) {
   Column {
     state.items.forEach { item ->
       ListItem(
         modifier = Modifier.clickable {
-          onItemClick(item)
+          onItemClicked(item)
         },
         headlineContent = {
           Text(text = stringResource(item.titleRes))

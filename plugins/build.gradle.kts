@@ -5,7 +5,7 @@ plugins {
 dependencies {
   implementation(libs.androidPluginForGradle)
   implementation(libs.kotlin.pluginForGradle)
-  compileOnly(libs.kotlin.compilerEmbeddable)
+  implementation(libs.kotlin.compilerEmbeddable)
   implementation(libs.ktlint.gradlePlugin)
 }
 
@@ -32,6 +32,6 @@ gradlePlugin {
 
 kotlin {
   jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+    (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(17))
   }
 }

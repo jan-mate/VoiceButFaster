@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 56,
-    "identityHash": "f71db09ceebbff2c448c04a3e003ec6c",
+    "identityHash": "c3ca526dcd626675b9a745dbc6444c86",
     "entities": [
       {
         "tableName": "bookmark",
@@ -46,10 +46,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -102,10 +102,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -162,10 +162,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -224,10 +224,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -268,10 +268,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -290,7 +290,8 @@
             "fieldPath": "playbackSpeed",
             "columnName": "playbackSpeed",
             "affinity": "REAL",
-            "notNull": true
+            "notNull": true,
+            "defaultValue": "4.0"
           },
           {
             "fieldPath": "skipSilence",
@@ -361,10 +362,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -417,10 +418,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -475,8 +476,8 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [],
-          "autoGenerate": false
+          "autoGenerate": false,
+          "columnNames": []
         },
         "indices": [],
         "foreignKeys": []
@@ -493,10 +494,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "searchTerm"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [],
         "foreignKeys": []
@@ -505,7 +506,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f71db09ceebbff2c448c04a3e003ec6c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c3ca526dcd626675b9a745dbc6444c86')"
     ]
   }
 }

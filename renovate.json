@@ -14,19 +14,20 @@
       ]
     },
     {
-      "groupName": "Kotlin, KSP",
-      "matchPackageNames": [
-        "org.jetbrains.kotlin:{/,}**",
-        "org.jetbrains.kotlin.{/,}**",
-        "com.google.devtools.ksp{/,}**"
+      "groupName": "Kotlin, Compose, KSP",
+      "matchPackagePrefixes": [
+        "androidx.compose.compiler:compiler",
+        "org.jetbrains.kotlin:",
+        "org.jetbrains.kotlin.",
+        "com.google.devtools.ksp"
       ]
     },
     {
       "groupName": "Ktlint",
-      "matchPackageNames": [
-        "com.pinterest.ktlint{/,}**",
-        "io.nlopez.compose.rules{/,}**",
-        "io.github.usefulness{/,}**"
+      "matchPackagePrefixes": [
+        "com.pinterest.ktlint",
+        "io.nlopez.compose.rules",
+        "io.github.usefulness"
       ]
     },
     {
@@ -36,8 +37,8 @@
       "registryUrls": [
         "https://jitpack.io/"
       ],
-      "matchPackageNames": [
-        "com.github.PaulWoitaschek{/,}**"
+      "matchPackagePrefixes": [
+        "com.github.PaulWoitaschek"
       ]
     },
     {

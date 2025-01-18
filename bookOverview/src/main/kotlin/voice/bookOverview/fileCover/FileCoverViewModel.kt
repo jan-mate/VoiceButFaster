@@ -14,7 +14,9 @@ import javax.inject.Inject
 @ContributesMultibinding(BookOverviewScope::class, boundType = BottomSheetItemViewModel::class)
 class FileCoverViewModel
 @Inject
-constructor(private val navigator: Navigator) : BottomSheetItemViewModel {
+constructor(
+  private val navigator: Navigator,
+) : BottomSheetItemViewModel {
 
   private var bookId: BookId? = null
 
@@ -22,7 +24,7 @@ constructor(private val navigator: Navigator) : BottomSheetItemViewModel {
     return listOf(BottomSheetItem.FileCover)
   }
 
-  override suspend fun onItemClick(
+  override suspend fun onItemClicked(
     bookId: BookId,
     item: BottomSheetItem,
   ) {

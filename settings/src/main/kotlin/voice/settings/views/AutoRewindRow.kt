@@ -48,7 +48,7 @@ internal fun AutoRewindRow(
 @Composable
 internal fun AutoRewindAmountDialog(
   currentSeconds: Int,
-  onSecondsConfirm: (Int) -> Unit,
+  onSecondsConfirmed: (Int) -> Unit,
   onDismiss: () -> Unit,
 ) {
   TimeSettingDialog(
@@ -57,7 +57,7 @@ internal fun AutoRewindAmountDialog(
     minSeconds = 0,
     maxSeconds = 20,
     textPluralRes = StringsR.plurals.seconds,
-    onSecondsConfirm = onSecondsConfirm,
+    onSecondsConfirmed = onSecondsConfirmed,
     onDismiss = onDismiss,
   )
 }

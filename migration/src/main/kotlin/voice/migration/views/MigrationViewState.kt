@@ -4,10 +4,10 @@ import java.time.Instant
 
 internal data class MigrationViewState(
   val items: List<Item>,
-  val onDeleteClick: () -> Unit,
+  val onDeleteClicked: () -> Unit,
   val showDeletionConfirmationDialog: Boolean,
-  val onDeletionConfirm: () -> Unit,
-  val onDeletionAbort: () -> Unit,
+  val onDeletionConfirmed: () -> Unit,
+  val onDeletionAborted: () -> Unit,
 ) {
   data class Item(
     val name: String,

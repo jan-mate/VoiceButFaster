@@ -1,10 +1,9 @@
 package voice.scripts
 
 import com.github.ajalt.clikt.core.CliktCommand
-import com.github.ajalt.clikt.core.Context
 import java.io.File
 
-class PopulateTestFiles : CliktCommand() {
+class PopulateTestFiles : CliktCommand(help = "Populates test files using adb") {
 
   private val testFilesRoot = File("build/testfiles/")
 
@@ -17,8 +16,6 @@ class PopulateTestFiles : CliktCommand() {
 
     pushToAdb()
   }
-
-  override fun help(context: Context): String = "Populates test files using adb"
 
   private fun pushToAdb() {
     println("Pushing to adb")

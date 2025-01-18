@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.datastore.core.DataStore
@@ -18,9 +17,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import voice.app.AppController
 import voice.app.features.bookOverview.EditCoverDialogController
+import voice.app.features.bookmarks.BookmarkController
 import voice.app.injection.appComponent
 import voice.app.misc.conductor.asVerticalChangeHandlerTransaction
-import voice.bookmark.BookmarkController
 import voice.common.BookId
 import voice.common.navigation.Destination
 import voice.common.navigation.NavigationCommand
@@ -58,9 +57,6 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     appComponent.inject(this)
     super.onCreate(savedInstanceState)
-
-    enableEdgeToEdge()
-
     val root = ChangeHandlerFrameLayout(this)
     setContentView(root)
 
@@ -120,7 +116,7 @@ class MainActivity : AppCompatActivity() {
     setupFromIntent(intent)
   }
 
-  override fun onNewIntent(intent: Intent) {
+  override fun onNewIntent(intent: Intent?) {
     super.onNewIntent(intent)
     setupFromIntent(intent)
   }

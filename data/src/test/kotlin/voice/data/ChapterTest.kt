@@ -128,8 +128,5 @@ class ChapterTest {
     positions.shouldContainInOrder(expected)
   }
 
-  data class MarkPosition(
-    val start: Long,
-    val end: Long,
-  )
+  data class MarkPosition(val start: Long, val end: Long)
 }

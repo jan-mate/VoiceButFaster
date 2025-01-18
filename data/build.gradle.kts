@@ -35,7 +35,7 @@ dependencies {
   implementation(libs.appCompat)
   implementation(libs.androidxCore)
   implementation(libs.serialization.json)
-  implementation(projects.pref)
+  implementation(libs.prefs.core)
 
   api(libs.room.runtime)
   ksp(libs.room.compiler)
@@ -51,6 +51,7 @@ dependencies {
   testImplementation(libs.androidX.test.runner)
   testImplementation(libs.junit)
   testImplementation(libs.robolectric)
+  testImplementation(libs.prefs.inMemory)
   testImplementation(libs.koTest.assert)
   testImplementation(libs.coroutines.test)
 }

@@ -18,7 +18,9 @@ import javax.inject.Inject
 )
 class EditBookCategoryViewModel
 @Inject
-constructor(private val repo: BookRepository) : BottomSheetItemViewModel {
+constructor(
+  private val repo: BookRepository,
+) : BottomSheetItemViewModel {
 
   override suspend fun items(bookId: BookId): List<BottomSheetItem> {
     val book = repo.get(bookId) ?: return emptyList()
@@ -38,7 +40,7 @@ constructor(private val repo: BookRepository) : BottomSheetItemViewModel {
     }
   }
 
-  override suspend fun onItemClick(
+  override suspend fun onItemClicked(
     bookId: BookId,
     item: BottomSheetItem,
   ) {

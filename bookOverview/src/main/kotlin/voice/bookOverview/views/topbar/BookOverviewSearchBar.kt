@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
@@ -30,49 +29,42 @@ internal fun ColumnScope.BookOverviewSearchBar(
   searchViewState: BookSearchViewState,
 ) {
   SearchBar(
-    inputField = {
-      SearchBarDefaults.InputField(
-        query = if (searchActive) {
-          searchViewState.query
-        } else {
-          ""
-        },
-        onQueryChange = onQueryChange,
-        onSearch = onQueryChange,
-        expanded = searchActive,
-        onExpandedChange = onActiveChange,
-        leadingIcon = {
-          TopBarLeadingIcon(
-            searchActive = searchActive,
-            onActiveChange = onActiveChange,
-          )
-        },
-        trailingIcon = {
-          TopBarTrailingIcon(
-            searchActive = searchActive,
-            showMigrateIcon = showMigrateIcon,
-            showMigrateHint = showMigrateHint,
-            showAddBookHint = showAddBookHint,
-            onBookMigrationClick = onBookMigrationClick,
-            onBoomMigrationHelperConfirmClick = onBoomMigrationHelperConfirmClick,
-            onBookFolderClick = onBookFolderClick,
-            onSettingsClick = onSettingsClick,
-          )
-        },
-      )
-    },
-    expanded = searchActive,
-    onExpandedChange = onActiveChange,
     modifier = Modifier
       .fillMaxWidth()
       .padding(horizontal = horizontalPadding),
-    content = {
-      BookSearchContent(
-        viewState = searchViewState,
-        contentPadding = PaddingValues(),
-        onQueryChange = onQueryChange,
-        onBookClick = onSearchBookClick,
+    query = if (searchActive) {
+      searchViewState.query
+    } else {
+      ""
+    },
+    onQueryChange = onQueryChange,
+    onSearch = onQueryChange,
+    active = searchActive,
+    onActiveChange = onActiveChange,
+    leadingIcon = {
+      TopBarLeadingIcon(
+        searchActive = searchActive,
+        onActiveChange = onActiveChange,
       )
     },
-  )
+    trailingIcon = {
+      TopBarTrailingIcon(
+        searchActive = searchActive,
+        showMigrateIcon = showMigrateIcon,
+        showMigrateHint = showMigrateHint,
+        showAddBookHint = showAddBookHint,
+        onBookMigrationClick = onBookMigrationClick,
+        onBoomMigrationHelperConfirmClick = onBoomMigrationHelperConfirmClick,
+        onBookFolderClick = onBookFolderClick,
+        onSettingsClick = onSettingsClick,
+      )
+    },
+  ) {
+    BookSearchContent(
+      viewState = searchViewState,
+      contentPadding = PaddingValues(),
+      onQueryChange = onQueryChange,
+      onBookClick = onSearchBookClick,
+    )
+  }
 }

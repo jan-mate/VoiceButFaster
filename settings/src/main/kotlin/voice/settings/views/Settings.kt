@@ -57,9 +57,9 @@ private fun SettingsPreview() {
         override fun close() {}
         override fun toggleDarkTheme() {}
         override fun seekAmountChanged(seconds: Int) {}
-        override fun onSeekAmountRowClick() {}
-        override fun autoRewindAmountChang(seconds: Int) {}
-        override fun onAutoRewindRowClick() {}
+        override fun onSeekAmountRowClicked() {}
+        override fun autoRewindAmountChanged(seconds: Int) {}
+        override fun onAutoRewindRowClicked() {}
         override fun dismissDialog() {}
         override fun openTranslations() {}
         override fun getSupport() {}
@@ -131,10 +131,10 @@ private fun Settings(
           },
         )
         SeekTimeRow(viewState.seekTimeInSeconds) {
-          listener.onSeekAmountRowClick()
+          listener.onSeekAmountRowClicked()
         }
         AutoRewindRow(viewState.autoRewindInSeconds) {
-          listener.onAutoRewindRowClick()
+          listener.onAutoRewindRowClicked()
         }
         ListItem(
           modifier = Modifier.clickable { listener.suggestIdea() },
@@ -185,14 +185,14 @@ private fun Dialog(
     SettingsViewState.Dialog.AutoRewindAmount -> {
       AutoRewindAmountDialog(
         currentSeconds = viewState.autoRewindInSeconds,
-        onSecondsConfirm = listener::autoRewindAmountChang,
+        onSecondsConfirmed = listener::autoRewindAmountChanged,
         onDismiss = listener::dismissDialog,
       )
     }
     SettingsViewState.Dialog.SeekTime -> {
       SeekAmountDialog(
         currentSeconds = viewState.seekTimeInSeconds,
-        onSecondsConfirm = listener::seekAmountChanged,
+        onSecondsConfirmed = listener::seekAmountChanged,
         onDismiss = listener::dismissDialog,
       )
     }

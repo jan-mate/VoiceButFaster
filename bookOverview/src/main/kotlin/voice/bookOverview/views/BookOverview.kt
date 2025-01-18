@@ -3,8 +3,6 @@ package voice.bookOverview.views
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
@@ -19,13 +17,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
 import kotlinx.collections.immutable.persistentMapOf
 import kotlinx.coroutines.launch
 import voice.bookOverview.bottomSheet.BottomSheetContent
@@ -102,7 +100,7 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
     onSearchActiveChange = bookOverviewViewModel::onSearchActiveChange,
     onSearchQueryChange = bookOverviewViewModel::onSearchQueryChange,
     onSearchBookClick = bookOverviewViewModel::onSearchBookClick,
-    onPermissionBugCardClick = bookOverviewViewModel::onPermissionBugCardClick,
+    onPermissionBugCardClicked = bookOverviewViewModel::onPermissionBugCardClicked,
   )
   val deleteBookViewState = deleteBookViewModel.state.value
   if (deleteBookViewState != null) {
@@ -110,7 +108,7 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
       viewState = deleteBookViewState,
       onDismiss = deleteBookViewModel::onDismiss,
       onConfirmDeletion = deleteBookViewModel::onConfirmDeletion,
-      onDeleteCheckBoxCheck = deleteBookViewModel::onDeleteCheckBoxCheck,
+      onDeleteCheckBoxChecked = deleteBookViewModel::onDeleteCheckBoxChecked,
     )
   }
   val editBookTitleState = editBookTitleViewModel.state.value
@@ -131,7 +129,7 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
       content = {
         BottomSheetContent(
           state = bottomSheetViewModel.state.value,
-          onItemClick = { item ->
+          onItemClicked = { item ->
             if (item == BottomSheetItem.FileCover) {
               getContentLauncher.launch("image/*")
             }
@@ -163,7 +161,7 @@ internal fun BookOverview(
   onSearchActiveChange: (Boolean) -> Unit,
   onSearchQueryChange: (String) -> Unit,
   onSearchBookClick: (BookId) -> Unit,
-  onPermissionBugCardClick: () -> Unit,
+  onPermissionBugCardClicked: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
   val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -191,13 +189,8 @@ internal fun BookOverview(
         )
       }
     },
-    contentWindowInsets = WindowInsets(0, 0, 0, 0),
   ) { contentPadding ->
-    Box(
-      Modifier
-        .padding(contentPadding)
-        .consumeWindowInsets(contentPadding),
-    ) {
+    Box(Modifier.padding(contentPadding)) {
       when (viewState.layoutMode) {
         BookOverviewLayoutMode.List -> {
           ListBooks(
@@ -205,7 +198,7 @@ internal fun BookOverview(
             onBookClick = onBookClick,
             onBookLongClick = onBookLongClick,
             showPermissionBugCard = viewState.showStoragePermissionBugCard,
-            onPermissionBugCardClick = onPermissionBugCardClick,
+            onPermissionBugCardClicked = onPermissionBugCardClicked,
           )
         }
         BookOverviewLayoutMode.Grid -> {
@@ -214,7 +207,7 @@ internal fun BookOverview(
             onBookClick = onBookClick,
             onBookLongClick = onBookLongClick,
             showPermissionBugCard = viewState.showStoragePermissionBugCard,
-            onPermissionBugCardClick = onPermissionBugCardClick,
+            onPermissionBugCardClicked = onPermissionBugCardClicked,
           )
         }
       }
@@ -242,7 +235,7 @@ fun BookOverviewPreview(
       onSearchActiveChange = {},
       onSearchQueryChange = {},
       onSearchBookClick = {},
-      onPermissionBugCardClick = {},
+      onPermissionBugCardClicked = {},
     )
   }
 }

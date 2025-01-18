@@ -13,13 +13,15 @@ import javax.inject.Inject
 @ContributesMultibinding(BookOverviewScope::class)
 class InternetCoverViewModel
 @Inject
-constructor(private val navigator: Navigator) : BottomSheetItemViewModel {
+constructor(
+  private val navigator: Navigator,
+) : BottomSheetItemViewModel {
 
   override suspend fun items(bookId: BookId): List<BottomSheetItem> {
     return listOf(BottomSheetItem.InternetCover)
   }
 
-  override suspend fun onItemClick(
+  override suspend fun onItemClicked(
     bookId: BookId,
     item: BottomSheetItem,
   ) {

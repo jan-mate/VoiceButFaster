@@ -13,8 +13,7 @@ dependencies {
   implementation(projects.ffmpeg)
   implementation(projects.data)
   implementation(projects.common)
-  implementation(projects.pref)
-
+  implementation(libs.prefs.core)
   implementation(libs.appCompat)
   implementation(libs.dagger.core)
   implementation(libs.serialization.json)
